@@ -2,6 +2,10 @@
 
 #### Checkstyle
 
+The Checkstyle code styling plugin is available for both Eclipse and Android Studio IDEs.
+
+##### Eclipse
+
 Install and setup the Checkstyle Eclipse plugins.
 	
 Update site: <http://eclipse-cs.sourceforge.net/update/>
@@ -24,6 +28,31 @@ Update site: <http://eclipse-cs.sourceforge.net/update/>
 	7. Switch to "Main" tab
 	8. Set the configuration to use to the "checkstyle xml file" local config
 	9. Exclude files outside the source directories & from packages "gen"
+
+##### Android Studio
+
+Install and setup the Checkstyle-IDEA plugin.
+
+Plugin url: <http://plugins.jetbrains.com/plugin/1065>
+
+- Download and install the latest version of the plugin
+	1. Download the plugin to disk
+	2. Open Android Studio and go to preferences
+	3. IDE Settings > Plugins > Install plugin from disk (select file you downloaded)
+	4. Once plugin is installed, it will ask you to restart studio
+- Copy checkstyle.xml file to root of your project
+- Activate Checkstyle during new project setup
+	1. Open Studio and go back to Preferences
+	2. Go to Project Settings > Inspections and then search for Checkstyle
+	3. Change the real time scan to severity type Error
+	4. Go to Project Settings > Checkstyle
+	5. Add a new configuration file
+	6. Name it "checkstyle.xml"
+	7. Select the checkstyle.xml file in root of the project
+	8. Press the Next button
+	9. Enter "bin/cachefile" as the property for "checkstyle.cache.file"
+	10. Choose OK and activate the new config
+	11. Hit apply and then OK
 
 #### Save Actions
 

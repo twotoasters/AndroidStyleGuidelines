@@ -40,8 +40,14 @@ Plugin url: <http://plugins.jetbrains.com/plugin/1065>
 	2. Open Android Studio and go to preferences
 	3. IDE Settings > Plugins > Install plugin from disk (select file you downloaded)
 	4. Once plugin is installed, it will ask you to restart studio
+
 - Copy checkstyle.xml file to root of your project
-- Activate Checkstyle during new project setup
+- Create a symlink to the checkstyle.xml from the project root that contains the file
+
+        mkdir -p config/checkstyle  
+        ln -s ../../checkstyle.xml config/checkstyle/checkstyle.xml
+
+- Activate Checkstyle in Android Studio IDE during new project setup
 	1. Open Studio and go back to Preferences
 	2. Go to Project Settings > Inspections and then search for Checkstyle
 	3. Change the real time scan to severity type Error
@@ -53,6 +59,31 @@ Plugin url: <http://plugins.jetbrains.com/plugin/1065>
 	9. Enter "bin/cachefile" as the property for "checkstyle.cache.file"
 	10. Choose OK and activate the new config
 	11. Hit apply and then OK
+- Activate Checkstyle in Gradle build file: `build.gradle`
+	1. Apply checkstyle plugin
+
+            buildscript
+                repositories {
+                    mavenCentral()
+                }
+            }
+          
+            apply plugin: checkstyle
+
+	2. Add checkstyle task
+
+            task checkstyle(type: Checkstyle) {
+                source 'src'
+                include '**/*.java'
+                exclude '**/gen/**'
+    
+                // empty classpath
+                classpath = files()
+            }
+
+	3. Insert checkstyle task build step  
+
+			preBuild.dependsOn('checkstyle')
 
 #### Save Actions
 

@@ -4,6 +4,10 @@
     "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
 
 <module name="Checker">
+    <module name="SuppressionFilter">
+        <property name="file" value="${proj.module.dir}/checkstyle-suppressions.xml"/>
+    </module>
+    
     <module name="NewlineAtEndOfFile">
         <property name="lineSeparator" value="lf"/>
     </module>

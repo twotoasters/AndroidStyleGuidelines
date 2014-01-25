@@ -37,7 +37,7 @@ Install and setup the [Checkstyle-IDEA plugin](http://plugins.jetbrains.com/plug
 	6. Name it "checkstyle.xml"
 	7. Select the checkstyle.xml file in root of the project
 	8. Press the Next button
-	9. Enter "bin/cachefile" as the property for "checkstyle.cache.file"
+	9. Enter the absolute path to the folder containing the `checkstyle-suppressions.xml` as the property for "proj.module.dir"
 	10. Choose OK and activate the new config
 	11. Hit apply and then OK
 
@@ -62,13 +62,18 @@ Install and setup the [Checkstyle-IDEA plugin](http://plugins.jetbrains.com/plug
 	2. Add checkstyle task
 
             task checkstyle(type: Checkstyle) {
-                source 'src'
-                include '**/*.java'
-                exclude '**/gen/**'
-    
-                // empty classpath
-                classpath = files()
-            }
+			    source 'src'
+			    include '**/*.java'
+			    exclude '**/gen/**'
+			    exclude '**/R.java'
+			    exclude '**/BuildConfig.java'
+
+			    def configProps = ['proj.module.dir': projectDir.absolutePath]
+			    configProperties configProps
+
+			    // empty classpath
+			    classpath = files()
+			}
 
 	3. Insert checkstyle task build step  
 

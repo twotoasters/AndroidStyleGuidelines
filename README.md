@@ -48,36 +48,9 @@ Install and setup the [Checkstyle-IDEA plugin](http://plugins.jetbrains.com/plug
         mkdir -p config/checkstyle  
         ln -s ../../checkstyle.xml config/checkstyle/checkstyle.xml
 
-- Activate Checkstyle in Gradle build file: `build.gradle`
-	1. Apply checkstyle plugin
+- Activate Checkstyle in `build.gradle` by adding this at the bottom:
 
-            buildscript
-                repositories {
-                    mavenCentral()
-                }
-            }
-          
-            apply plugin: checkstyle
-
-	2. Add checkstyle task
-
-            task checkstyle(type: Checkstyle) {
-			    source 'src'
-			    include '**/*.java'
-			    exclude '**/gen/**'
-			    exclude '**/R.java'
-			    exclude '**/BuildConfig.java'
-
-			    def configProps = ['proj.module.dir': projectDir.absolutePath]
-			    configProperties configProps
-
-			    // empty classpath
-			    classpath = files()
-			}
-
-	3. Insert checkstyle task build step  
-
-			preBuild.dependsOn('checkstyle')
+        apply from: 'https://raw.github.com/twotoasters/AndroidStyleGuidelines/master/checkstyle.gradle'
 
 ## Eclipse
 

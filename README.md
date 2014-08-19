@@ -45,12 +45,16 @@ Install and setup the [Checkstyle-IDEA plugin](http://plugins.jetbrains.com/plug
 
 - Create a symlink to the checkstyle.xml from the project root that contains the file
 
-        mkdir -p config/checkstyle  
-        ln -s ../../checkstyle.xml config/checkstyle/checkstyle.xml
+    ```bash
+    mkdir -p config/checkstyle  
+    ln -s ../../checkstyle.xml config/checkstyle/checkstyle.xml
+    ```
 
 - Activate Checkstyle in `build.gradle` by adding this at the bottom:
 
-        apply from: 'https://raw.github.com/twotoasters/AndroidStyleGuidelines/master/checkstyle.gradle'
+    ```groovy
+    apply from: 'https://raw.github.com/twotoasters/AndroidStyleGuidelines/master/checkstyle.gradle'
+    ```
 
 ## Eclipse
 

@@ -40,6 +40,7 @@ Install and setup the [Checkstyle-IDEA plugin](http://plugins.jetbrains.com/plug
 	9. Enter the absolute path to the folder containing the `checkstyle-suppressions.xml` as the property for "proj.module.dir"
 	10. Choose OK and activate the new config
 	11. Hit apply and then OK
+	12. ensure folder `bin` exists in the root of your project. It is used for treewalker cache
 
 #### Gradle Build Support
 
